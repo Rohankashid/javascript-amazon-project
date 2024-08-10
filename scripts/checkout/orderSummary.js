@@ -25,6 +25,15 @@ import { renderPaymentSummary } from "./paymentSummary.js";
 
     const deliveryOption = getDeliveryOption(deliveryOptionId) ;
 
+    const today = dayjs();
+    const deliveryDate = today.add(
+      deliveryOption.deliveryDays,
+      'days'
+    );
+    const dateString = deliveryDate.format(
+      'dddd , MMMM D'
+    );
+
 
 
 
@@ -32,7 +41,7 @@ import { renderPaymentSummary } from "./paymentSummary.js";
     cartSummaryHTML += `
 <div class="cart-item-container js-cart-item-container-${matchingProduct.id}">
             <div class="delivery-date">
-              Delivery date: Tuesday, June 21
+              Delivery date: ${dateString}
             </div>
 
             <div class="cart-item-details-grid">
